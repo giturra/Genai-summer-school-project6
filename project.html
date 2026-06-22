@@ -1,0 +1,739 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CWX3EWQT36"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-CWX3EWQT36');
+    </script>
+
+    <!-- Additional Meta Tags -->
+    <meta name="theme-color" content="#ff6b35">
+    <meta name="msapplication-TileColor" content="#ff6b35">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="GenAI Summer School">
+
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/apple-touch-icon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <!-- Header and Global Styles -->
+    <link rel="stylesheet" href="./assets/css/header.css">
+
+
+</head>
+<body>
+
+<!-- NAVBAR (Desktop + Offcanvas Mobile) -->
+<nav class="navbar navbar-expand-lg sticky-top bg-white shadow-sm border-bottom">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="index.php">
+      <img src="./assets/images/logo.png" alt="Logo" style="height:56px" class="me-2">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mx-auto align-items-lg-center">
+        <li class="nav-item">
+          <a class="nav-link" href="index.php"><i class="bi bi-house-door me-1 text-primary"></i>Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="speakers.php"><i class="bi bi-people me-1 text-primary"></i>Lecturers</a>
+        </li>
+
+        <!-- MEGA MENU: Program -->
+        <li class="nav-item">
+          <a class="nav-link d-inline-flex align-items-center gap-2" href="program.php">
+            <i class="bi bi-calendar2-event text-primary"></i>
+            <span>Program</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="venue.php"><i class="bi bi-geo-alt me-1 text-primary"></i>Venue</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="sponsors.php"><i class="bi bi-award me-1 text-primary"></i>Sponsors</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="terms.php"><i class="bi bi-file-earmark-text me-1 text-primary"></i>Terms</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="contact.php"><i class="bi bi-envelope me-1 text-primary"></i>Contact</a>
+        </li>
+      </ul>
+
+      <div class="d-flex gap-2 align-items-center">
+        <button class="btn btn-outline-secondary" id="theme-toggle" title="Toggle theme">
+          <i id="theme-icon" class="bi bi-moon-fill"></i>
+        </button>
+        <a class="btn btn-primary me-0" href="apply.php"><i class="bi bi-rocket-takeoff me-1"></i> Apply Now</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- OFFCANVAS MOBILE MENU -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="mobileMenu">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title">Menu</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body d-flex flex-column">
+    <a class="nav-link py-2" href="index.php"><i class="bi bi-house-door me-1"></i>Home</a>
+    <a class="nav-link py-2" href="program.php"><i class="bi bi-cpu me-1"></i>Program</a>
+    <a class="nav-link py-2" href="speakers.php"><i class="bi bi-people me-1"></i>Lecturers</a>
+    <a class="nav-link py-2" href="dates.php"><i class="bi bi-calendar-event me-1"></i>Important Dates</a>
+    <a class="nav-link py-2" href="venue.php"><i class="bi bi-geo-alt me-1"></i>Venue</a>
+    <a class="nav-link py-2" href="sponsors.php"><i class="bi bi-award me-1"></i>Sponsors</a>
+    <a class="nav-link py-2" href="contact.php"><i class="bi bi-envelope me-1"></i>Contact</a>
+    <div class="mt-auto d-grid gap-2">
+      <button class="btn btn-outline-secondary mb-2" id="mobile-theme-toggle" title="Toggle theme">
+        <i id="mobile-theme-icon" class="bi bi-moon-fill me-2"></i>Dark Mode
+      </button>
+      <a class="btn btn-primary me-0" href="apply.php"><i class="bi bi-rocket-takeoff me-1"></i> Apply Now</a>
+    </div>
+  </div>
+</div>
+<!-- SEO Meta Tags -->
+    <title>Sentiment Classification on Sentiment140: Classical, Neural, and Transformer — Project #6 | Summer School on Generative AI</title>
+    <meta name="description" content="Detailed instructions, datasets, pipeline, and tips for project #6: Sentiment Classification on Sentiment140: Classical, Neural, and Transformer.">
+    <meta name="keywords" content="summer school project, Sentiment Classification on Sentiment140: Classical, Neural, and Transformer, NLP, LLM, Sapienza, Rome 2026">
+    <meta name="author" content="Sapienza Università di Roma">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="en-US">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://intelligent-systems.net/school/project-detail.php?id=6">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://intelligent-systems.net/school/project-detail.php?id=6">
+    <meta property="og:title" content="Sentiment Classification on Sentiment140: Classical, Neural, and Transformer — Project #6 | Summer School on Generative AI">
+    <meta property="og:description" content="Detailed instructions, datasets, pipeline, and tips for project #6: Sentiment Classification on Sentiment140: Classical, Neural, and Transformer.">
+    <meta property="og:image" content="https://intelligent-systems.net/school/assets/images/hero-llm.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="International Summer School on Generative AI">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://intelligent-systems.net/school/project-detail.php?id=6">
+    <meta name="twitter:title" content="Sentiment Classification on Sentiment140: Classical, Neural, and Transformer — Project #6 | Summer School on Generative AI">
+    <meta name="twitter:description" content="Detailed instructions, datasets, pipeline, and tips for project #6: Sentiment Classification on Sentiment140: Classical, Neural, and Transformer.">
+    <meta name="twitter:image" content="https://intelligent-systems.net/school/assets/images/hero-llm.jpg">
+    <meta name="twitter:image:alt" content="Sentiment Classification on Sentiment140: Classical, Neural, and Transformer — Project #6 | Summer School on Generative AI">
+
+<link rel="stylesheet" href="./assets/css/mainPage.css">
+<link rel="stylesheet" href="./assets/css/projects.css?v=1782120313">
+
+
+<!-- Hero -->
+<section class="detail-hero">
+  <div class="container">
+    <div class="detail-breadcrumb">
+      <a href="projects.php">← Back to all projects</a>
+    </div>
+    <div class="detail-eyebrow">Project 6</div>
+    <h1 class="detail-title">Sentiment Classification on Sentiment140: Classical, Neural, and Transformer</h1>
+    <div class="detail-badge-row">
+      <span class="hw-badge hw-either">CPU / GPU</span>
+    </div>
+  </div>
+</section>
+
+<div class="container detail-container">
+  <main class="detail-main">
+
+  <!-- Page-wide guidance note -->
+  <div class="freedom-note">
+    <strong>Note.</strong> This page lays out one full version of the project — the goal, a sample input/output, suggested tools, and a step-by-step plan. Treat it as a reference, not a script. Your team can pick a different angle, swap libraries, narrow the scope, or take the project somewhere we did not anticipate. As long as the final deliverable makes sense for the goal, you are on track.
+  </div>
+
+  <!-- Summary -->
+  <section class="detail-section" id="summary">
+    <div class="detail-pfield"><strong>Task.</strong> Use the Sentiment140 dataset (1.6M English tweets, binary positive / negative, balanced). Build three sentiment classifiers on the same split — a classical model, a small neural model, and a fine-tuned transformer — and compare accuracy, F1, training time, and inference latency. The point is to feel what each stage of NLP buys you on the same task. <strong>You could use</strong> <code>sklearn</code> for the classical baseline (TF-IDF + Logistic Regression, Naive Bayes, or SVM), PyTorch or Keras for the neural model (BiLSTM, CNN, anything), and HuggingFace <code>transformers</code> for the transformer (DistilBERT, BERT, RoBERTa). <strong>Resource-friendly mode.</strong> If the team is short on RAM or compute, subsample with a fixed seed and keep the classes balanced — 50k tweets on a laptop, 200k on a mid-range GPU, the full 1.6M on Colab T4 or better. The comparison stays meaningful at any size. <strong>Going further (optional).</strong> Build a small UI where someone types a tweet and sees all three predictions, train at three subsample sizes to plot accuracy vs data, or add an LLM zero-shot baseline so you can compare four stages of NLP, not three.</div>
+    <div class="detail-pfield"><span class="lbl">Resources:</span> CPU works for the sklearn baseline and a small subsample; Colab T4 or 8GB GPU for the LSTM and the BERT fine-tune. The dataset is large (1.6M tweets) but easily subsamples — pick a size that fits your hardware.</div>
+      </section>
+
+  
+        <section class="detail-section">
+      <h2>What you'll build</h2>
+      <p class="detail-overview">Build three sentiment classifiers for short English tweets and compare them head-to-head. The point is to see what each generation of NLP buys you on the same task: a classical TF-IDF + logistic regression baseline, a small neural model (BiLSTM or CNN), and a fine-tuned transformer. Report accuracy, training time, inference time per example, and disk size. The dataset is large (1.6M tweets) but easily subsamples to whatever the team's hardware can handle.</p>
+    </section>
+    
+        <section class="detail-section">
+      <h2>What goes in, what comes out</h2>
+              <div class="io-grid">
+                      <div class="io-card io-input">
+              <h3 class="io-label">Input</h3>
+              <p>Sentiment140 tweets (around 1.6M total, balanced binary labels). Each tweet is short (often under 25 words). Labels are 0 (negative) or 4 (positive); remap 4 → 1 for convenience.</p>
+            </div>
+                                <div class="io-card io-output">
+              <h3 class="io-label">Output</h3>
+              <p>Three classifiers plus a comparison table with accuracy, training time, inference latency, and model size.</p>
+            </div>
+                  </div>
+      
+                    <div class="code-block">
+                      <div class="code-caption">A few rows from the train set</div>
+                    <pre class="code-pre"><code class="lang-text">label  tweet
+-----  -----
+  0    @kennethcole missing you so much! I hope you come back soon :(
+  1    Just had the best pancakes ever at this little diner downtown. Going to be a great day!
+  0    My internet has been out for 3 hours. So frustrating, I have a deadline tonight.
+  1    Thanks @sarahsmith for the birthday wishes! You made my day :)
+  0    Long lines at the airport, missed my flight. Worst Monday in a while.</code></pre>
+        </div>
+                    <div class="code-block">
+                      <div class="code-caption">Head-to-head comparison (trained on a 200k subsample, evaluated on a 50k held-out)</div>
+                    <pre class="code-pre"><code class="lang-text">Model                              Accuracy  Train time  Inference (ms/ex)  Model size
+-------------------------------    --------  ----------  -----------------  ----------
+TF-IDF + Logistic Regression         0.78        1 min         0.02            4 MB
+BiLSTM on word embeddings            0.81        8 min         1.2            12 MB
+DistilBERT fine-tune                 0.84       10 min         3.8           260 MB
+
+Lessons:
+  - Sentiment140 caps at around 84-85% because the labels themselves
+    are noisy (auto-derived from emoticons).
+  - Classical baseline is competitive thanks to the short input.
+  - DistilBERT helps on negation and sarcasm-ish phrasing — not on
+    the noisy half of the labels.</code></pre>
+        </div>
+          </section>
+    
+        <section class="detail-section">
+      <h2>Datasets</h2>
+              <div class="detail-card">
+          <h3 class="detail-card-title">
+            Sentiment140                          <a class="detail-link" href="https://huggingface.co/datasets/stanfordnlp/sentiment140" target="_blank" rel="noopener">↗</a>
+                      </h3>
+                      <p>1.6M English tweets labelled positive or negative. Labels were auto-derived from emoticons, so they are noisy but the dataset is large and balanced. Tweets are short, which makes all three stages train fast.</p>
+                                <p><span class="lbl">How to get it:</span> <code>from datasets import load_dataset; ds = load_dataset("stanfordnlp/sentiment140")</code>. Remap labels 4 → 1.</p>
+                                <p class="meta-line"><span class="lbl">License:</span> Free for research use.</p>
+                  </div>
+              <div class="detail-card">
+          <h3 class="detail-card-title">
+            Subset for low-resource teams                      </h3>
+                      <p>If the team is short on RAM or compute, do not train on the full 1.6M. A balanced subsample works just as well for the comparison. Suggested sizes by hardware: laptop CPU only → 50k tweets; mid-range laptop with GPU → 200k tweets; Colab T4 / Kaggle → 500k tweets or the full set.</p>
+                                <p><span class="lbl">How to get it:</span> After loading, shuffle with a fixed seed and slice: <code>ds["train"].shuffle(seed=42).select(range(50_000))</code>. Make sure both classes stay balanced — sample 25k from each.</p>
+                            </div>
+          </section>
+    
+        <section class="detail-section">
+      <h2>Tools you'll need</h2>
+      <p class="freedom-note">These are suggestions, not requirements. If your team is more comfortable with a different library, model, or framework that achieves the same goal, use it — and briefly explain the choice in your README.</p>
+              <p class="detail-pfield">
+                      <span class="lbl">Python:</span> Python 3.10 or newer.
+                                <span class="lbl">Compute:</span> A laptop CPU is fine for stages 1 and 2 on a 50k subsample. Stage 3 (DistilBERT) is much faster on a Colab T4, but it works on CPU with smaller subsets too.                  </p>
+      
+            
+                        <div class="sub-heading">Stage 1 — classical</div>
+          <ul class="lib-list">
+                          <li><code>scikit-learn</code> — TF-IDF vectoriser and logistic regression. Two lines of code.</li>
+                      </ul>
+                  <div class="sub-heading">Stage 2 — neural</div>
+          <ul class="lib-list">
+                          <li><code>torch</code> — PyTorch for the BiLSTM or CNN. Train your own embedding layer or load pretrained GloVe / fastText.</li>
+                          <li><code>datasets</code> — Stream tweets and labels.</li>
+                      </ul>
+                  <div class="sub-heading">Stage 3 — transformer</div>
+          <ul class="lib-list">
+                          <li><code>transformers</code> — Load and fine-tune DistilBERT.</li>
+                          <li><code>accelerate</code> — Hardware-agnostic training loop.</li>
+                      </ul>
+                  <div class="sub-heading">Evaluation</div>
+          <ul class="lib-list">
+                          <li><code>evaluate</code> — Accuracy and confusion matrix wrappers.</li>
+                      </ul>
+                  </section>
+    
+        <section class="detail-section">
+      <h2>How to approach it</h2>
+      <p class="freedom-note">One reasonable path through the project. Specific tools (UMAP, HDBSCAN, BERTopic, etc.) are examples — feel free to swap them for alternatives you know better.</p>
+              <ol class="detail-list">
+                      <li><strong>Load.</strong> Pull Sentiment140. Remap labels 4 → 1. Decide on a subsample size based on your hardware (50k is enough to make the comparison meaningful).</li>
+                      <li><strong>Light cleanup.</strong> Strip URLs (<code>http[s]?://...</code>), replace <code>@usernames</code> with <code>@user</code>, leave hashtags as-is (they often carry sentiment).</li>
+                      <li><strong>Stage 1 — Classical.</strong> Fit a TF-IDF vectoriser on train (word + character bigrams), train a logistic regression, evaluate on test.</li>
+                      <li><strong>Stage 2 — Neural.</strong> Build a PyTorch model: an embedding layer + BiLSTM + linear head. Train for 3 epochs.</li>
+                      <li><strong>Stage 3 — Transformer.</strong> Fine-tune <code>distilbert-base-uncased</code> for 2 epochs with the HuggingFace <code>Trainer</code>. Truncate to 64 tokens — tweets rarely need more.</li>
+                      <li><strong>Measure.</strong> For each model record: test accuracy, training wall-clock time, inference latency per example, on-disk size.</li>
+                      <li><strong>Compare.</strong> Put it all in one table. Discuss which approach you would pick for which use case, and how the curve might change with the full 1.6M.</li>
+                  </ol>
+          </section>
+    
+        <section class="detail-section">
+      <h2>What to deliver</h2>
+      <ul class="detail-list">
+                  <li>Three notebooks (one per stage) that produce reproducible numbers.</li>
+                  <li>A single comparison table with accuracy, training time, inference latency, disk size.</li>
+                  <li>A one-page write-up: in which scenario would the team pick each approach? And how would the picture change at 10x more data?</li>
+                  <li>A documented note on the subsample size used — so the comparison is reproducible.</li>
+              </ul>
+    </section>
+    
+        <section class="detail-section">
+      <h2>References</h2>
+      <ul class="detail-list">
+                  <li><a href="https://huggingface.co/datasets/stanfordnlp/sentiment140" target="_blank" rel="noopener">HuggingFace Sentiment140 dataset card</a></li>
+                  <li><a href="https://www-cs.stanford.edu/people/alecmgo/papers/TwitterDistantSupervision09.pdf" target="_blank" rel="noopener">Sentiment140 original paper (Go, Bhayani, Huang, 2009)</a></li>
+                  <li><a href="https://scikit-learn.org/stable/modules/feature_extraction.html#text-feature-extraction" target="_blank" rel="noopener">scikit-learn text feature extraction</a></li>
+                  <li><a href="https://pytorch.org/tutorials/beginner/text_sentiment_ngrams_tutorial.html" target="_blank" rel="noopener">PyTorch text classification tutorial</a></li>
+                  <li><a href="https://huggingface.co/learn/nlp-course/chapter3/3" target="_blank" rel="noopener">HuggingFace text-classification tutorial</a></li>
+              </ul>
+    </section>
+    
+  
+    <div class="detail-footer-nav">
+      <a href="projects.php">← Back to all projects</a>
+    </div>
+  </main>
+</div>
+
+
+ <!-- Footer -->
+<!-- Footer -->
+<footer class="footer-modern pt-5 pb-4 position-relative" data-bs-theme="light">
+  <div class="container">
+    <div class="row g-4">
+      <!-- Brand + mission -->
+      <div class="col-12 col-lg-4">
+        <div class="d-flex align-items-center mb-3">
+          <a class="navbar-brand me-2" href="index.php" aria-label="Home">
+            <img src="./assets/images/logo.png" alt="Generative AI Summer School" style="height:90px">
+          </a>
+          <h5 class="fw-bold mb-0">Generative AI Summer School</h5>
+        </div>
+        <p class="text-muted mb-3">
+          Empowering the next generation of AI researchers and engineers through cutting-edge education and hands-on experience.
+        </p>
+
+        <div class="d-flex gap-2">
+          <a class="social-ico" href="#" data-bs-toggle="tooltip" data-bs-title="Twitter / X" aria-label="Twitter">
+            <i class="bi bi-twitter-x"></i>
+          </a>
+          <a class="social-ico" href="#" data-bs-toggle="tooltip" data-bs-title="LinkedIn" aria-label="LinkedIn">
+            <i class="bi bi-linkedin"></i>
+          </a>
+          <a class="social-ico" href="#" data-bs-toggle="tooltip" data-bs-title="YouTube" aria-label="YouTube">
+            <i class="bi bi-youtube"></i>
+          </a>
+          <a class="social-ico" href="#" data-bs-toggle="tooltip" data-bs-title="GitHub" aria-label="GitHub">
+            <i class="bi bi-github"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Info -->
+      <div class="col-6 col-lg-2">
+        <h6 class="text-brand fw-bold mb-3"><i class="bi bi-info-circle me-1"></i> Info</h6>
+        <ul class="list-unstyled mb-0">
+          <li><a class="footer-link" href="index.php"><i class="bi bi-chevron-right me-1"></i>Home</a></li>
+          <li><a class="footer-link" href="program.php"><i class="bi bi-chevron-right me-1"></i>Program</a></li>
+          <li><a class="footer-link" href="speakers.php"><i class="bi bi-chevron-right me-1"></i>Lecturers</a></li>
+          <li><a class="footer-link" href="venue.php"><i class="bi bi-chevron-right me-1"></i>Venue</a></li>
+        </ul>
+      </div>
+
+      <!-- Participate -->
+      <div class="col-6 col-lg-2">
+        <h6 class="text-brand fw-bold mb-3"><i class="bi bi-people me-1"></i> Participate</h6>
+        <ul class="list-unstyled mb-0">
+          <li><a class="footer-link" href="apply.php"><i class="bi bi-chevron-right me-1"></i>Apply</a></li>
+          <li><a class="footer-link" href="contact.php"><i class="bi bi-chevron-right me-1"></i>Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact + quick actions (no subscribe) -->
+      <div class="col-12 col-lg-4">
+        <h6 class="text-brand fw-bold mb-3"><i class="bi bi-envelope-paper me-1"></i> Contact</h6>
+        <ul class="list-unstyled small mb-3">
+          <li class="mb-2 d-flex align-items-center flex-wrap">
+            <i class="bi bi-envelope me-2"></i>
+            <a class="footer-link me-2" id="mailLink" href="mailto:intelligent.systems2026@gmail.com">
+              intelligent.systems2026@gmail.com
+            </a>
+            <button class="btn btn-outline-secondary btn-sm btn-copy" type="button"
+                    data-copy="intelligent.systems2026@gmail.com" data-bs-toggle="tooltip" data-bs-title="Copy">
+              <i class="bi bi-clipboard"></i>
+            </button>
+          </li>
+          <li class="mb-2"><i class="bi bi-geo-alt me-2"></i>Rome, Italy · Hybrid</li>
+          <li><i class="bi bi-clock me-2"></i>Application deadline: until all seats are filled</li>
+        </ul>
+
+        <div class="d-flex flex-wrap gap-2">
+          <a href="apply.php" class="btn btn-brand">
+            <i class="bi bi-lightning-charge-fill me-1"></i>Secure your seat
+          </a>
+          <a href="contact.php" class="btn btn-outline-dark">
+            <i class="bi bi-chat-dots me-1"></i>Get in touch
+          </a>
+          <a href="venue.php" class="btn btn-outline-dark">
+            <i class="bi bi-geo me-1"></i>Venue details
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Partners / supporters (optional) -->
+    <div class="partners-scroller mt-4 pt-2">
+      <span class="small text-muted me-3"><i class="bi bi-stars me-1"></i>Supported by</span>
+      <div class="partners-track">
+        <img src="./assets/images/sapi.png" alt="Partner 1" class="partner-logo">
+        <img src="./assets/images/napli.svg" alt="Partner 2" class="partner-logo">
+        <!-- <img src="./assets/images/partner3.svg" alt="Partner 3" class="partner-logo"> -->
+      </div>
+    </div>
+
+    <hr class="my-4">
+
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+      <p class="mb-0 text-muted">
+        <i class="bi bi-c-circle me-1"></i><span id="year"></span> Generative AI Summer School. All rights reserved.
+      </p>
+      <div class="d-flex align-items-center gap-3 small text-muted">
+        <span><i class="bi bi-shield-check me-1"></i>Privacy-by-Design</span>
+        <span class="vr d-none d-md-inline"></span>
+        <a class="footer-link" href="terms.php"><i class="bi bi-file-lock me-1"></i>Terms</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Back to top -->
+  <button type="button" class="btn btn-brand back-to-top" aria-label="Back to top">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+</footer>
+
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="./assets/js/main.js"></script>
+
+
+    <!-- Main Scripts -->
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Animated particle background
+        function createParticles() {
+            const heroSection = document.querySelector('.hero-section');
+            const particleContainer = document.createElement('div');
+            particleContainer.className = 'hero-particles';
+            
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                particleContainer.appendChild(particle);
+            }
+            
+            heroSection.appendChild(particleContainer);
+        }
+
+        // Initialize everything on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+        });
+    </script>
+
+    <!-- HEADER SCRIPTS -->
+<script>
+  // AOS
+  if (window.AOS) AOS.init({ once:true, duration:700, offset:80 });
+
+  // Scroll progress
+  const sp = document.getElementById('scrollProgress');
+  if (sp) {
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement;
+      const p = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+      sp.style.width = p + '%';
+    });
+  }
+
+  // Countdown + seats
+  (function(){
+    const bar = document.getElementById('deadlineBar'); if(!bar) return;
+    const end = new Date(bar.dataset.deadline || '').getTime();
+    const days = document.getElementById('cd-days');
+    const hours= document.getElementById('cd-hours');
+    const mins = document.getElementById('cd-mins');
+    const total = +bar.dataset.seatsTotal || 120;
+    const left  = +bar.dataset.seatsLeft  || 40;
+    const used = Math.max(0, total - left);
+    const capacityBar = document.getElementById('capacityBar');
+    const capacityText = document.getElementById('capacityText');
+    if (capacityBar) capacityBar.style.width = (used*100/total)+'%';
+    if (capacityText) capacityText.textContent = `${left} left / ${total}`;
+
+    function tick(){
+      const now = Date.now(); let diff = Math.max(0, end - now);
+      if (!isFinite(diff) || diff <= 0){ 
+        if (days) days.textContent='0'; 
+        if (hours) hours.textContent='0'; 
+        if (mins) mins.textContent='0'; 
+        return; 
+      }
+      const d = Math.floor(diff / (1000*60*60*24)); diff -= d*24*60*60*1000;
+      const h = Math.floor(diff / (1000*60*60));    diff -= h*60*60*1000;
+      const m = Math.floor(diff / (1000*60));
+      if (days) days.textContent=d; 
+      if (hours) hours.textContent=h; 
+      if (mins) mins.textContent=m;
+    }
+    tick(); setInterval(tick, 30*1000);
+  })();
+
+  // Animate stats when visible
+  (function(){
+    const nums = document.querySelectorAll('.stat-number[data-target]');
+    if(!nums.length) return;
+    const animate = el => {
+      const target = +el.dataset.target || 0;
+      const dur = 900, start = performance.now();
+      function step(t){ const p = Math.min(1, (t-start)/dur); el.textContent = Math.round(target*p).toLocaleString(); if(p<1) requestAnimationFrame(step); }
+      requestAnimationFrame(step);
+    };
+    const io = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ animate(e.target); io.unobserve(e.target); } });
+    }, {threshold:.6});
+    nums.forEach(n=>io.observe(n));
+  })();
+
+  // Sticky mini-CTA after scroll
+  const mini = document.getElementById('miniCta');
+  if (mini) {
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY || document.documentElement.scrollTop;
+      mini.classList.toggle('show', y > 600);
+    });
+  }
+
+  // Rotating pill text
+  (function(){
+    const el = document.getElementById('rotatingPill'); if(!el) return;
+    const msgs = ['Hands-on projects','Research mentorship','Industry case studies','Safety & evaluation'];
+    let i = 0; setInterval(()=>{ i=(i+1)%msgs.length; el.textContent = msgs[i]; }, 2200);
+  })();
+
+  // Video modal
+  const videoModal = document.getElementById('videoModal');
+  const frame = document.getElementById('videoFrame');
+  if(videoModal && frame){
+    videoModal.addEventListener('show.bs.modal', ()=>{ frame.src = 'https://www.youtube.com/embed/ysz5S6PUM-U?autoplay=1&rel=0'; });
+    videoModal.addEventListener('hidden.bs.modal', ()=>{ frame.src = ''; });
+  }
+
+  // Add to Calendar (ICS)
+  document.getElementById('addCalendar')?.addEventListener('click', ()=>{
+    const title='Summer School in Generative AI';
+    const start='20260622T080000Z', end='20260626T160000Z';
+    const loc='Sapienza Università di Roma, Rome, Italy';
+    const desc='The International Summer School on Generative AI';
+    const ics = [
+      'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//SummerSchool//EN','CALSCALE:GREGORIAN',
+      'BEGIN:VEVENT',
+      'DTSTAMP:'+new Date().toISOString().replace(/[-:]/g,'').split('.')[0]+'Z',
+      'DTSTART:'+start,'DTEND:'+end,
+      'SUMMARY:'+title,'LOCATION:'+loc,'DESCRIPTION:'+desc,
+      'END:VEVENT','END:VCALENDAR'
+    ].join('\r\n');
+    const blob = new Blob([ics], {type:'text/calendar;charset=utf-8'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a'); a.href=url; a.download='summer-school.ics'; a.click();
+    setTimeout(()=>URL.revokeObjectURL(url), 500);
+  });
+
+  // Theme toggle (light/dark) - removed old implementation
+  // New theme toggle is handled in main.js
+</script>
+
+
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const card = document.getElementById('ctaCard');
+  if (!card) return;
+  
+  const deadline = new Date(card.dataset.deadline);
+  const total = +card.dataset.seatsTotal || 0;
+  const left  = +card.dataset.seatsLeft  || 0;
+
+  const dd = document.getElementById('cdDays');
+  const hh = document.getElementById('cdHours');
+  const mm = document.getElementById('cdMins');
+  const bar = document.getElementById('seatsBar');
+  const txt = document.getElementById('seatsText');
+
+  const stickyDays  = document.getElementById('stickyDays');
+  const stickySeats = document.getElementById('stickySeats');
+
+  // Seats meter
+  const pct = total ? Math.max(0, Math.min(100, (1 - left/total) * 100)) : 0;
+  if (bar) bar.style.width = pct + '%';
+  if (txt) txt.textContent = `${left} of ${total} left`;
+  if (stickySeats) stickySeats.textContent = left;
+
+  // Countdown
+  function tick(){
+    const now = new Date();
+    let ms = deadline - now;
+    if (ms <= 0){
+      if (dd) dd.textContent = '0';
+      if (hh) hh.textContent = '0';
+      if (mm) mm.textContent = '0';
+      if (stickyDays) stickyDays.textContent = '0d';
+      document.getElementById('applyBtn')?.classList.add('disabled');
+      return clearInterval(tmr);
+    }
+    const days  = Math.floor(ms / 86400000); ms %= 86400000;
+    const hours = Math.floor(ms / 3600000);  ms %= 3600000;
+    const mins  = Math.floor(ms / 60000);
+    if (dd) dd.textContent = days;
+    if (hh) hh.textContent = String(hours).padStart(2,'0');
+    if (mm) mm.textContent = String(mins).padStart(2,'0');
+    if (stickyDays) stickyDays.textContent = days + 'd';
+  }
+  tick();
+  const tmr = setInterval(tick, 30000); // update every 30s (minutes granularity)
+
+  // Simple “Add to Calendar” .ics
+  document.getElementById('addCalendar')?.addEventListener('click', () => {
+    const dtEnd = new Date(deadline.getTime() + 3600000); // +1h
+    const toICS = d => d.toISOString().replace(/[-:]/g,'').replace(/\.\d{3}Z$/,'Z');
+    const ics =
+`BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//GAI Summer School//EN
+BEGIN:VEVENT
+UID:${Date.now()}@gai-school
+DTSTAMP:${toICS(new Date())}
+DTSTART:${toICS(deadline)}
+DTEND:${toICS(dtEnd)}
+SUMMARY:Early-bird deadline – Generative AI Summer School
+DESCRIPTION:Apply now to secure your spot.
+URL:https://example.com/apply.html
+END:VEVENT
+END:VCALENDAR`;
+    const blob = new Blob([ics], {type:'text/calendar'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'GAI-summer-school-early-bird.ics';
+    document.body.appendChild(a); a.click(); a.remove();
+  });
+});
+</script>
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const root = document.getElementById('cta');
+  if (!root) return;
+
+  const deadlineISO = root.dataset.deadline;
+  const total = parseInt(root.dataset.seatsTotal || '0', 10);
+  const left  = parseInt(root.dataset.seatsLeft  || '0', 10);
+
+  const bar   = document.getElementById('capacityBar');
+  const text  = document.getElementById('capacityText');
+  const dEl   = document.getElementById('deadlineText');
+
+  // Capacity meter
+  if (total > 0){
+    const capacityBar = document.getElementById('capacityBar');
+    const capacityText = document.getElementById('capacityText');
+    if (capacityBar && capacityText) {
+      const used = Math.max(0, total - left);
+      const pct  = Math.min(100, Math.round((used / total) * 100));
+      capacityBar.style.width = pct + '%';
+      capacityText.textContent = `${left} left`;
+      capacityBar.title = `${used}/${total} taken (${pct}%)`;
+    }
+  }
+
+  // Deadline text (pretty)
+  if (dEl && deadlineISO){
+    const d = new Date(deadlineISO);
+    const fmt = d.toLocaleString(undefined, {year:'numeric', month:'long', day:'numeric'});
+    dEl.textContent = fmt;
+  }
+
+  // Countdown
+  const days = document.getElementById('cd-days');
+  const hours = document.getElementById('cd-hours');
+  const mins = document.getElementById('cd-mins');
+  const applyBtn = document.getElementById('applyCta');
+
+  function tick(){
+    if (!deadlineISO) return;
+    const now = new Date();
+    const end = new Date(deadlineISO);
+    const diff = end - now;
+
+    if (diff <= 0){
+      if (days) days.textContent = '00';
+      if (hours) hours.textContent = '00';
+      if (mins) mins.textContent = '00';
+      applyBtn?.classList.remove('pulse');
+      applyBtn?.classList.add('disabled');
+      applyBtn?.setAttribute('aria-disabled', 'true');
+      applyBtn?.setAttribute('title','Applications closed');
+      return;
+    }
+
+    const m = Math.floor(diff / 60000);
+    const d = Math.floor(m / (60*24));
+    const h = Math.floor((m - d*60*24)/60);
+    const mm= Math.max(0, m - d*60*24 - h*60);
+
+    if (days) days.textContent = String(d).padStart(2,'0');
+    if (hours) hours.textContent = String(h).padStart(2,'0');
+    if (mins) mins.textContent = String(mm).padStart(2,'0');
+  }
+
+  tick();
+  const t = setInterval(tick, 1000 * 30); // update every 30s (enough for minutes display)
+  window.addEventListener('beforeunload', () => clearInterval(t), { once:true });
+});
+</script>
+
+
+</body>
+</html>
