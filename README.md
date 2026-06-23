@@ -3,6 +3,14 @@
 **International Summer School on Generative AI**  
 **From NLP to LLMs to Agentic AI: Theory, Applications, and Practice**
 
+**Integrants:**
+
+- Patrizia De Camillis
+- Bartas Lisauskas
+- Mark Byrd
+- Minghzi Wang
+- Gabriel Iturra Bocaz
+
 ## Overview
 
 This project compares three generations of NLP sentiment classifiers on the same binary tweet-classification task. The goal is to understand what each stage of NLP buys us in practice: a fast classical machine learning baseline, a small neural network, and a fine-tuned transformer model.
