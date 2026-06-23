@@ -148,6 +148,10 @@ All experiments used:
 - Random seed: 42
 - Same cleaning strategy across all stages
 
+## Running Interface
+
+To run the interface you need to create a folder in the project called 'models' and with the files 'distilbert', 'bilstm.pt' and 'classical.pkl' with the distilbert, lstm and logistic regression models respectively. Then run app.py and go to http://127.0.0.1:5057.
+
 ## Project Context
 
 This project was completed in the context of the **International Summer School on Generative AI: From NLP to LLMs to Agentic AI — Theory, Applications, and Practice**.
