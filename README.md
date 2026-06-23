@@ -95,6 +95,30 @@ Settings:
 
 Tweets are usually short, so truncating to 64 tokens is enough for this task.
 
+### Stage 3 Improvement — Embedding Perturbation Training
+
+The improved transformer experiment uses **Cosine LR Scheduling + Embedding Perturbation Training**.
+
+Embedding Perturbation Training is a lightweight robustness method applied during fine-tuning. For each training batch, the model first performs a standard forward and backward pass. The gradient on the word embedding layer is then used to create a small normalized perturbation:
+
+```text
+perturbation = epsilon * gradient / ||gradient||
+```
+
+This perturbation is temporarily added to the word embedding parameters, and the same batch is passed through the model a second time to compute an adversarial loss. The original embeddings are restored before the optimizer update. This encourages the model to make stable predictions under small worst-case changes in embedding space.
+
+In this project, the best setting was:
+
+```python
+learning_rate = 2e-5
+lr_scheduler_type = "cosine"
+num_train_epochs = 2
+MAX_LENGTH = 64
+perturbation_epsilon = 0.2
+```
+
+This method only changes training. The final inference-time model architecture remains the same DistilBERT sequence classifier.
+
 ## Results
 
 All models were trained and evaluated on the same 50,000-example balanced dataset.
@@ -105,6 +129,17 @@ All models were trained and evaluated on the same 50,000-example balanced datase
 | Embedding + BiLSTM | 50,000 | 40,000 | 10,000 | 0.7708 | 0.765019 | 11.808705 | 0.000414 | 6.084473 | 50 | 3 |
 | DistilBERT fine-tune | 50,000 | 40,000 | 10,000 | 0.8295 | 0.825218 | 283.382543 | 7.116618 | 256.109494 | 64 | 2 |
 
+### DistilBERT Baseline vs. Improved Method
+
+The final improvement was evaluated against the original DistilBERT fine-tuning baseline on the same 50,000-example balanced Sentiment140 subsample.
+
+| Method | Accuracy | F1 | Train Time (s) | Max Tokens | Epochs |
+|---|---:|---:|---:|---:|---:|
+| Original DistilBERT baseline | 0.8309 | 0.8273 | 95.5 | 64 | 2 |
+| Cosine LR + Embedding Perturbation Training | 0.8373 | 0.8343 | 146.9 | 64 | 2 |
+
+Compared with the original DistilBERT baseline, the improved method increased accuracy by **0.64 percentage points** and F1 by **0.70 percentage points**. The model size and inference-time architecture stayed unchanged because embedding perturbations were used only during training.
+
 ## Interpretation
 
 The classical TF-IDF + Logistic Regression model performed very well, reaching almost 80% accuracy with a small model size and fast training. This shows that classical NLP methods are still strong baselines, especially for short texts like tweets.
@@ -112,6 +147,8 @@ The classical TF-IDF + Logistic Regression model performed very well, reaching a
 The BiLSTM model performed slightly worse than the classical model in this run. This is not unusual. The model was trained from scratch on only 50,000 tweets, so it did not benefit from large pretrained language representations. Neural models often need more data, careful tuning, or pretrained embeddings such as GloVe or fastText to beat a strong TF-IDF baseline.
 
 DistilBERT achieved the best accuracy and F1 score. This shows the advantage of transformer-based language models: they start with useful pretrained language knowledge and can better handle context, negation, and short phrase-level meaning. However, this improvement came with much higher training time, inference latency, and disk size.
+
+The improved DistilBERT configuration further shows that training-time robustness methods can improve a transformer without changing its deployed architecture. Cosine LR Scheduling made optimization smoother, while Embedding Perturbation Training added a small adversarial signal in embedding space. This produced the strongest result in the project while keeping the same DistilBERT model size at inference time.
 
 ## Main Takeaways
 
@@ -124,10 +161,13 @@ DistilBERT achieved the best accuracy and F1 score. This shows the advantage of 
 3. **Transformers give the best performance but cost more.**  
    DistilBERT achieved the highest accuracy and F1, but required much more compute and storage.
 
-4. **The Sentiment140 labels are noisy.**  
+4. **Embedding perturbations improve transformer robustness.**  
+   A small embedding perturbation during fine-tuning improved DistilBERT performance without changing the inference-time architecture.
+
+5. **The Sentiment140 labels are noisy.**  
    Since labels were originally derived from emoticons, some examples are ambiguous or mislabeled. This limits maximum performance.
 
-5. **The experiment reflects the evolution from NLP to LLMs.**  
+6. **The experiment reflects the evolution from NLP to LLMs.**  
    The project demonstrates the progression from sparse feature-based NLP, to neural representation learning, to pretrained transformer models, which are the foundation of modern LLM systems.
 
 ## Reproducibility
@@ -151,4 +191,3 @@ It connects directly to the course theme by showing how sentiment classification
 3. Transformer-based NLP with pretrained language models
 
 This comparison helps explain why modern generative AI and agentic AI systems are built on transformer-based architectures, while also showing that simpler methods remain useful for many practical tasks.
-
