@@ -1,0 +1,49 @@
+Date,Time,Session,Speaker
+Monday Jun 22,08:30 – 09:00,Registration and Coffee,
+,09:00 – 10:00,Learning Human-Aligned Concepts from Data,Stefano Teso
+,10:00 – 11:00,Evaluation of AI Systems,Marzieh Fadaee
+,11:00 – 12:00,Datasets & Tools for Arabic NLP and LLMs,Mustafa Jarrar
+,12:00 – 13:00,Engineering the Age of LLM Agents: Architectures for Autonomous Intelligence,Henry Muccini
+,13:00 – 14:00,Lunch Break,
+,14:00 – 15:00,Explainable Scientific Machine Learning: Methods and Applications,Salvatore Cuomo
+,15:00 – 16:00,Hands-on Session 1: From Tokens to Transformers: A Hands-On NLP Journey,Addi Ait-Mlouk
+,16:00 – 16:30,Coffee Break,
+,16:30 – 17:30,Project Ideas Presentation,Addi Ait-Mlouk
+,17:30 – 18:30,Hands-on Session 2: LLM 101,Fahed Alkhabbas
+Tuesday Jun 23,08:30 – 09:00,Registration and Coffee,
+,09:00 – 10:00,Project Development (Group Work),
+,10:00 – 11:30,Hands on session 3: Co-evolutionary Algorithms for Training Generative Neural Models (VAEs & GANs),Jamal Toutouh
+,11:30 – 12:00,Coffee Break,
+,12:00 – 13:00,Gamification of Large Language Models,Michal Valko
+,13:00 – 14:00,Lunch Break,
+,14:00 – 15:00,Large Scale Distributed LLM Inference with LLM-D and Kubernetes,Abdellfetah SGHIOUAR
+,15:00 – 15:30,Coffee Break,
+,15:30 – 16:30,Hands-on Session 4: Small and Locally Deployed VLMs Under Evaluation: A Case Study of Image Captioning,Osama Hamed
+,16:30 – 17:30,Agentic AI Workflows: Coordinated LLM Collaboration for Multi-Step Task Fulfillment,Ahmed AbuRaed
+,18:30 – 20:30,Social Activity 1,
+Wednesday Jun 24,08:30 – 09:00,Registration and Coffee,
+,09:00 – 10:00,Securing the Future: The Dual Role of Generative AI in Cyber Defense and Cyber Threats,Kayode Adewole
+,10:00 – 11:00,Building Agentic AI: A Practical Introduction,Oleksandra Sopova
+,11:00 – 12:00,GenAI for Urban Computing Applications,Huthaifa I. Ashqar
+,12:00 – 13:00,Efficient LLM Inference: From Cloud to the Edge — Hardware-Software Co-Design in Practice,Kaoutar El Maghraoui
+,13:00 – 14:00,Lunch Break,
+,14:00 – 15:30,Collaborative AI with Flower: a Hands-on Session,Chong Shen Ng
+,15:30 – 16:30,"Designing AI Systems for Scale, Reliability, and Trust",Tony James
+,16:30 – 17:00,Coffee Break,
+,17:00 – 18:30,Project Development (group work),
+,19:30 – 21:00,Social Activity 2,
+Thursday Jun 25,08:30 – 09:00,Registration and Coffee,
+,09:00 – 10:00,"On the Relationship Between Distributed, Federated, and Decentralized Training",Nicolas Lane
+,10:00 – 12:00,Hands-on Session 5: Agentic AI,Karthik Vaidhyanathan
+,12:00 – 13:00,Project Development (Group Work),
+,13:00 – 14:00,Lunch Break,
+,14:00 – 15:30,From Graph to Crew: A Hands-On Tour of Agentic AI Frameworks,Mohammad Dehghani
+,15:30 – 16:00,Coffee Break,
+,16:00 – 18:30,Project Development (group work),
+,20:00 – 22:30,Dinner,
+Friday Jun 26,08:30 – 09:00,Registration and Coffee,
+,09:00 – 10:00,Adversarial Robustness in the Age of Foundation Models,Leo Schwinn
+,10:00 – 13:00,Projects’ Presentations,
+,13:00 – 14:00,Lunch Break,
+,14:00 – 17:30,Projects’ Presentations + Coffee break (15:00-15:30),
+,17:30 – 18:00,Closing,
