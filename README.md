@@ -150,7 +150,68 @@ All experiments used:
 
 ## Running Interface
 
-To run the interface you need to create a folder in the project called 'models' and with the files 'distilbert', 'bilstm.pt' and 'classical.pkl' with the distilbert, lstm and logistic regression models respectively. Then run app.py and go to http://127.0.0.1:5057.
+The project includes a local demo interface called **Y**, a mock social media
+page where the three sentiment models reply to a posted tweet as comments. This
+connects the notebook experiments to the presentation demo: the classical model,
+the BiLSTM model, and the DistilBERT model all read the same input and return
+their predicted sentiment.
+
+First install the project dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Create a `models/` folder in the project root with the trained artifacts:
+
+```text
+models/
+- classical.pkl
+- bilstm.pt
+- distilbert/
+```
+
+The files should contain the Logistic Regression pipeline, the trained BiLSTM
+checkpoint, and the saved DistilBERT model directory respectively.
+
+Run the demo with:
+
+```bash
+python app.py
+```
+
+Then open:
+
+```text
+http://127.0.0.1:5057
+```
+
+The app runs locally with Flask. It loads the model artifacts once at startup,
+then sends each tweet to the models through the `/predict` endpoint.
+
+## Running the Notebooks
+
+The notebooks are stored in the `notebooks/` folder and follow the same
+experimental structure as the presentation:
+
+1. Classical TF-IDF + Logistic Regression
+2. Embedding + BiLSTM
+3. Fine-tuned DistilBERT
+
+To run them manually, start Jupyter from the project root:
+
+```bash
+jupyter notebook notebooks
+```
+
+Run the notebooks in this order so that the comparison follows the NLP timeline
+from classical methods to neural models and then transformers:
+
+```text
+notebooks/Classic_ML_Genai_Project_6.ipynb
+notebooks/LTSM_Project_Genai_6.ipynb
+notebooks/Fine_Tuning_DistilBert_project_Genai_6.ipynb
+```
 
 ## Project Context
 
@@ -163,4 +224,3 @@ It connects directly to the course theme by showing how sentiment classification
 3. Transformer-based NLP with pretrained language models
 
 This comparison helps explain why modern generative AI and agentic AI systems are built on transformer-based architectures, while also showing that simpler methods remain useful for many practical tasks.
-
