@@ -217,6 +217,10 @@ experimental structure as the presentation:
 5. Data Scaling
 6. Ablation
 
+## Application
+
+We also applied our model to new data out of curiosity. We analysed the sentiment of two famous individuals and notorious tweeters; Elon Musk and Donald Trump. The analysis can be run using the notebook `Tweet-Sentimenet-TimeSeries.ipynb`.
+
 ## Project Context
 
 This project was completed in the context of the **International Summer School on Generative AI: From NLP to LLMs to Agentic AI — Theory, Applications, and Practice**.
