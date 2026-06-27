@@ -97,7 +97,7 @@ Tweets are usually short, so truncating to 64 tokens is enough for this task.
 
 ## Stage 4 - Large Language Model
 
-We also test on zero-shot performance on the LLM `qwen-2.5-3b`. We sample the test set to 1000 (statistically permissable with a sampling error of ~3%) for more faster testing.
+We also test on zero-shot performance on the LLM `Qwen2.5-3b-Instruct`. We sample the test set to 1000 (statistically permissable with a sampling error of ~3%) for more faster testing.
 
 We test on two prompts (naive + detailed) and record the best result.
 
@@ -112,7 +112,7 @@ All models were trained and evaluated on the same 50,000-example balanced datase
 | TF-IDF + Logistic Regression | 50,000 | 40,000 | 10,000 | 0.7968 | 0.798333 | 22.441771 | 0.253406 | 5.638535 | — | — |
 | Embedding + BiLSTM | 50,000 | 40,000 | 10,000 | 0.7708 | 0.765019 | 11.808705 | 0.000414 | 6.084473 | 50 | 3 |
 | DistilBERT fine-tune | 50,000 | 40,000 | 10,000 | 0.8295 | 0.825218 | 283.382543 | 7.116618 | 256.109494 | 64 | 2 |
-|LLM| 10,000 | 0 | 10,000 | 0.7350 | 0.7271 | 0 | 543.54 | 2000 | 32,768 | 0 |
+|LLM| 1,000 | 0 | 10,000 | 0.7350 | 0.7271 | 0 | 543.54 | 2000 | 32,768 | 0 |
 
 
 ## Data Scaling
@@ -219,7 +219,7 @@ experimental structure as the presentation:
 
 ## Application
 
-We also applied our model to new data out of curiosity. We analysed the sentiment of two famous individuals and notorious tweeters; Elon Musk and Donald Trump. The analysis can be run using the notebook `Tweet-Sentimenet-TimeSeries.ipynb`.
+We also applied our model to new data out of curiosity. We analysed the sentiment of two famous individuals and notorious tweeters; Elon Musk and Donald Trump. The analysis can be run using the notebook `Tweet_Sentiment_TimeSeries.ipynb`.
 
 ## Project Context
 

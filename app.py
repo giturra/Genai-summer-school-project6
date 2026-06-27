@@ -20,7 +20,7 @@ MODELS_DIR = Path(__file__).resolve().parent / "models"
 # --------------------------------------------------------------------------
 # Text cleanup (same as the training pipeline)
 # --------------------------------------------------------------------------
-_URL_RE = re.compile(r"https?://\S+")
+_URL_RE = re.compile(r"http\S+|www\S+|https\S+")
 _USER_RE = re.compile(r"@\w+")
 _WS_RE = re.compile(r"\s+")
 
@@ -35,10 +35,11 @@ def clean_text(t: str) -> str:
 # --------------------------------------------------------------------------
 # BiLSTM architecture + tokenizer (must match how bilstm.pt was trained)
 # --------------------------------------------------------------------------
-MAX_LEN = 40
+MAX_LEN = 50
 EMB_DIM = 100
 HIDDEN = 128
-_tok_re = re.compile(r"[a-z0-9@#']+")
+PAD_IDX, UNK_IDX = 0, 1
+_tok_re = re.compile(r"@\w+|#\w+|[a-zA-Z]+|[0-9]+|[^\s]")
 
 
 def tokenize(t: str):
@@ -46,27 +47,25 @@ def tokenize(t: str):
 
 
 def encode(t, vocab):
-    ids = [vocab.get(w, 1) for w in tokenize(t)][:MAX_LEN]
-    if not ids:
-        ids = [1]
-    return ids
+    ids = [vocab.get(w, UNK_IDX) for w in tokenize(t)][:MAX_LEN]
+    return ids + [PAD_IDX] * (MAX_LEN - len(ids))   # right-pad to MAX_LEN
 
 
 class BiLSTM(nn.Module):
+    # Must match the LTSM notebook's BiLSTMSentiment: same attribute names
+    # (embedding/lstm/dropout/fc), a 2-logit head, and a masked mean-pool readout.
     def __init__(self, vocab_size):
         super().__init__()
-        self.emb = nn.Embedding(vocab_size, EMB_DIM, padding_idx=0)
+        self.embedding = nn.Embedding(vocab_size, EMB_DIM, padding_idx=PAD_IDX)
         self.lstm = nn.LSTM(EMB_DIM, HIDDEN, batch_first=True, bidirectional=True)
-        self.drop = nn.Dropout(0.3)
-        self.fc = nn.Linear(HIDDEN * 2, 1)
+        self.dropout = nn.Dropout(0.3)
+        self.fc = nn.Linear(HIDDEN * 2, 2)
 
-    def forward(self, x, lens):
-        e = self.emb(x)
-        packed = nn.utils.rnn.pack_padded_sequence(
-            e, lens, batch_first=True, enforce_sorted=False)
-        _, (h, _) = self.lstm(packed)
-        h = torch.cat([h[0], h[1]], dim=1)
-        return self.fc(self.drop(h)).squeeze(1)
+    def forward(self, x):
+        out, _ = self.lstm(self.embedding(x))
+        mask = (x != PAD_IDX).unsqueeze(-1).float()
+        pooled = (out * mask).sum(1) / mask.sum(1).clamp(min=1)
+        return self.fc(self.dropout(pooled))
 
 
 # --------------------------------------------------------------------------
@@ -93,9 +92,9 @@ def load_bilstm():
     def predict(text):
         ids = torch.tensor([encode(text, vocab)])
         with torch.no_grad():
-            logit = model(ids, torch.tensor([ids.shape[1]]))
-            p = torch.sigmoid(logit).item()
-        return (1, p) if p > 0.5 else (0, 1 - p)
+            probs = model(ids).softmax(-1)[0]
+        i = int(probs.argmax())
+        return i, float(probs[i])
 
     return predict
 
